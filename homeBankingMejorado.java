@@ -16,7 +16,7 @@ import java.util.*;
  * @version 3.0
  */
 
-public class homeBanking{
+public class homeBankingMejorado{
     public static void main(String[] args) {
         //declaro objeto
         Scanner miTeclado;
@@ -28,10 +28,13 @@ public class homeBanking{
         String usuario, usuarioGuardado, claveGuardada, clave, opcion, sesionContinuar, sesion;
         //modificar saldo para probar todas las funciones
         int saldo = 50000;
-        int monto, totalPagos, intentos, maximo;
+        int monto, totalPagos, intentos, maximo, cbu;
+        char menu;
+        cbu = 0;
         maximo = 3;
         intentos = 1;
         monto = 0;
+        menu = 'A';
         opcion = "";
         sesion = "";
         usuario="";
@@ -68,22 +71,35 @@ public class homeBanking{
             }if(sesion .equals(sesionContinuar)){
                 System.out.println("Menu de opciones");
                 System.out.println("A: Realizar transferencia. B: Realizar un pago. C: Cerrar sesión");
-                opcion = miTeclado.nextLine();
-                System.out.println("Ha seleccionado la opcion: " + opcion);
+                menu = miTeclado.next().charAt(0);
+                System.out.println("Ha seleccionado la opcion: " + menu);
             }
 
 
         //ESTRUCTURA SWITCH para menu de opciones trasnferencia/pagos/salir
-       switch (opcion) {
+       switch (menu) {
 
-        case "A":
+        case 'A':
             System.out.println("Seccion TRANSFERENCIAS");
-            System.out.println("Ingrese monto a transferir");
+            System.out.println("Ingrese monto a transferir y CBU destinatario");
             monto = miTeclado.nextInt();
-            System.out.println("Se han debitado $" + monto + " para transferir a otra cuenta. Su saldo actual es de: $" + (saldo-monto));
+            System.out.println("Usted va a transferir: $" + monto + ". Desea continuar y transferir? S (Tranferir) / N (cancelar y cerrar sesión)");
+            opcion = miTeclado.nextLine();
+            if(opcion .equals(sesionContinuar)){
+                System.out.println("Se debitarán de su cuenta: $" + monto);
+                System.out.println("Ingrese CBU DESTINATARIO");
+                cbu = miTeclado.nextInt();
+                System.out.println("S para continuar con la transferncia. N para cancelar operación");
+                opcion=miTeclado.nextLine();
+            }if((monto <= saldo ) && (opcion .equals(sesionContinuar))){
+                System.out.println("Operación exitosa! Se han trasnferido $" + monto + " de su cuenta al CBU N° " + cbu +". Su saldo actual es de: $" + (saldo-monto));
+
+            }else if (opcion.equals(sesionContinuar) && (monto>saldo)){
+                System.out.println("No posee saldo suficiente para realizar esta operación");
+            }
 
             break;
-        case "B":
+        case 'B':
             System.out.println("Seccion PAGOS");
             System.out.println("Pendiente de pago - CABLEVISION FIBERTEL. Monto a abonar: $" + cablevision);
             System.out.println("Pendiente de pago - IMPUESTO INMOBILIARIO. Monto a abonar: $"+ inmbobiliario);
@@ -101,12 +117,18 @@ public class homeBanking{
             }else if (saldo<totalPagos){
                 System.out.println("Su saldo es insuficiente para realizar la transaccion.");
             }
-        case "C":
+                break;
+        case 'C':
             System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
         default:
             System.out.println("Su sesión ha expirado. Ingrese nuevamente sus datos para entrar al sistema");
             break;
        }
+       System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
+
+
+
+       miTeclado.close();
     }
 }
     
