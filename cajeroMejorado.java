@@ -81,17 +81,19 @@ public class cajeroMejorado{
                 do{
                 do{
                     System.out.println("Menú de opciones");
-                    System.out.println("1: Realizar transferencia.");
-                    System.out.println("2: Realizar un pago.");
-                    System.out.println("3: Cerrar sesión.");
+                    System.out.println("1: Datos de cuenta / Saldos.");
+                    System.out.println("2: Realizar transferencia.");
+                    System.out.println("3: Realizar un pago.");
+                    System.out.println("4: Cerrar sesión.");
                     menu = miTeclado.nextInt();
                     System.out.println("Ha seleccionado la opcion: " + menu);
                     }while(menu<1 || menu>4);
 
             //estructura switch
                     switch (menu) {
-
                         case 1:
+
+                        case 2:
                             System.out.println("Seccion TRANSFERENCIAS");
                             System.out.println("Ingrese monto a transferir");
                             monto = miTeclado.nextInt();
@@ -125,7 +127,7 @@ public class cajeroMejorado{
                             System.out.println("*****Aguarde y será redirigido al menu de opciones*****");
                             System.out.println("**********************************************************");
                             break;
-                        case 2://PAGO DE SERVICIOS
+                        case 3://PAGO DE SERVICIOS
                             System.out.println("Seccion PAGOS");
                             System.out.println("Pendiente de pago - CABLEVISION FIBERTEL. Monto a abonar: $" + cablevision);
                             System.out.println("Pendiente de pago - IMPUESTO INMOBILIARIO. Monto a abonar: $"+ inmbobiliario);
@@ -145,11 +147,11 @@ public class cajeroMejorado{
                                 System.out.println("Su saldo es insuficiente para realizar la transaccion.");
                             }
                                 break;
-                        case 3:
+                        case 4:
                             System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
                             break;
                        }
-                    }while((menu != 3) && (sesion != sesionContinuar));
+                    }while((menu != 4));
             }else{
                 System.out.println("Cerrando sesion");
             }
