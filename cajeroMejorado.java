@@ -60,7 +60,15 @@ public class cajeroMejorado{
         totalPagos = (cable + inmbobiliario + automotor);
 
         //ARRAYLIST para agenda de destinatarios transferencias
-        
+        ArrayList<Integer> cbuAgendado = new ArrayList<Integer>();
+
+        cbuAgendado.add(3000234);
+        cbuAgendado.add(3005678);
+        cbuAgendado.add(7006543);
+        cbuAgendado.add(80076543);
+
+        String usuario1 = "Fernando", usuario2="Mariela", usuario3="Pedro", usuario4="Josefina";
+
 
 
         //Instrucciones e-s
