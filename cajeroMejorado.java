@@ -25,13 +25,15 @@ public class cajeroMejorado{
         miTeclado = new Scanner(System.in);
 
         //delcaro e inicializo variables
-        String usuario, usuarioGuardado, claveGuardada, clave, opcion, sesionContinuar, sesion;
-        //modificar saldo para probar todas las funciones
-        int saldo = 50000;
-        int monto, totalPagos, intentos, maximo, cbu, menu, respuesta, rtaSaved;
+        //LETRAS
+        String usuario, usuarioGuardado, claveGuardada, clave, sesionContinuar, sesion;
+        //NUMEROS
+        int intentos, maximo, cbu, menu, respuesta, rtaSaved;
+        //DECIMALES
+        double monto, saldo, totalPagos;
+
         //variables ingresos por teclado opciones
-        menu = 'A'; //para ir al menu de opciones
-        opcion = "";
+        menu = 0; //para ir al menu de opciones
         sesion = "";//para continuar al menu principal
         sesionContinuar = "S";
         respuesta=0;
@@ -42,18 +44,19 @@ public class cajeroMejorado{
         clave = "";
         usuarioGuardado = "aldana";
         claveGuardada = "1234";
-
-
-        cbu = 0;
         maximo = 3;
         intentos = 1;
-        monto = 0;
 
-        sesionContinuar = "S";
-        int cablevision = 10000;
+        //variables datos cbu, saldos, pagos
+        cbu = 0;//ingreso de nuevo cbu
+        monto = 0;
+        saldo= 43500.77;
+        //declaro e inicializo variables de pagos
+        int cable = 10000;
         int inmbobiliario = 4998;
         int automotor = 12350;
-        totalPagos = (cablevision + inmbobiliario + automotor);
+        //operacion para PAGOS preestablecidos
+        totalPagos = (cable + inmbobiliario + automotor);
 
 
         //Instrucciones e-s
@@ -91,12 +94,14 @@ public class cajeroMejorado{
 
             //estructura switch
                     switch (menu) {
-                        case 1:
+                        case 1://CUENTA Y SALDOS
+                            System.out.println("DATOS CUENTA//SALDOS");
 
-                        case 2:
+
+                        case 2://TRANSFERENCIAS
                             System.out.println("Seccion TRANSFERENCIAS");
                             System.out.println("Ingrese monto a transferir");
-                            monto = miTeclado.nextInt();
+                            monto = miTeclado.nextDouble();
                             if(monto > saldo){
                                 System.out.println("No posee saldo suficiente para realizar esta operación");
 
@@ -129,7 +134,7 @@ public class cajeroMejorado{
                             break;
                         case 3://PAGO DE SERVICIOS
                             System.out.println("Seccion PAGOS");
-                            System.out.println("Pendiente de pago - CABLEVISION FIBERTEL. Monto a abonar: $" + cablevision);
+                            System.out.println("Pendiente de pago - CABLEVISION FIBERTEL. Monto a abonar: $" + cable);
                             System.out.println("Pendiente de pago - IMPUESTO INMOBILIARIO. Monto a abonar: $"+ inmbobiliario);
                             System.out.println("Pendiente de pago - IMPUESTO AUTOMOTOR. Monto a abonar: $" + automotor);
                             System.out.println("El monto total a pagar es de: $" + totalPagos);
