@@ -155,54 +155,6 @@ public class cajeroMejorado{
             }
 
 
-        //ESTRUCTURA SWITCH para menu de opciones trasnferencia/pagos/salir
-       /*switch (menu) {
-
-        case 'A':
-            System.out.println("Seccion TRANSFERENCIAS");
-            System.out.println("Ingrese monto a transferir y CBU destinatario");
-            monto = miTeclado.nextInt();
-            System.out.println("Usted va a transferir: $" + monto + ". Desea continuar y transferir? S (Tranferir) / N (cancelar y cerrar sesión)");
-            opcion = miTeclado.nextLine();
-            if(opcion .equals(sesionContinuar)){
-                System.out.println("Se debitarán de su cuenta: $" + monto);
-                System.out.println("Ingrese CBU DESTINATARIO");
-                cbu = miTeclado.nextInt();
-                System.out.println("S para continuar con la transferncia. N para cancelar operación");
-                opcion=miTeclado.nextLine();
-            }if((monto <= saldo ) && (opcion .equals(sesionContinuar))){
-                System.out.println("Operación exitosa! Se han trasnferido $" + monto + " de su cuenta al CBU N° " + cbu +". Su saldo actual es de: $" + (saldo-monto));
-
-            }else if (opcion.equals(sesionContinuar) && (monto>saldo)){
-                System.out.println("No posee saldo suficiente para realizar esta operación");
-            }
-
-            break;
-        case 'B':
-            System.out.println("Seccion PAGOS");
-            System.out.println("Pendiente de pago - CABLEVISION FIBERTEL. Monto a abonar: $" + cablevision);
-            System.out.println("Pendiente de pago - IMPUESTO INMOBILIARIO. Monto a abonar: $"+ inmbobiliario);
-            System.out.println("Pendiente de pago - IMPUESTO AUTOMOTOR. Monto a abonar: $" + automotor);
-            System.out.println("El monto total a pagar es de: $" + totalPagos);
-            System.out.println("¿Desea proceder al pago de lo mismos? Ingrese S para continuar / N para terminar");
-            opcion = miTeclado.nextLine();
-            if(opcion .equals(sesionContinuar)){
-                System.out.println("Se debitarán de su cuenta: $" + totalPagos);
-                System.out.println("S para confirmar el pago. N para cancelar operación");
-                opcion=miTeclado.nextLine();
-            }if((totalPagos <= saldo ) && (opcion .equals(sesionContinuar))){
-                System.out.println("Pagos realizados con éxito, se debitó de su cuenta la suma de $" + totalPagos + ". Su saldo actual es: $" +  (saldo - totalPagos));
-                break;
-            }else if (saldo<totalPagos){
-                System.out.println("Su saldo es insuficiente para realizar la transaccion.");
-            }
-                break;
-        case 'C':
-            System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
-        default:
-            System.out.println("Su sesión ha expirado. Ingrese nuevamente sus datos para entrar al sistema");
-            break;
-       }/* */
        System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
 
 
