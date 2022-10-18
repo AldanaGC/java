@@ -28,7 +28,7 @@ public class cajeroMejorado{
         //LETRAS
         String usuario, usuarioGuardado, claveGuardada, clave, sesionContinuar, sesion;
         //NUMEROS
-        int intentos, maximo, cbu, menu, respuesta, rtaSaved;
+        int intentos, maximo, cbu, menu, respuesta, rtaSaved, cbuPropio;
         //DECIMALES
         double monto, saldo, totalPagos;
 
@@ -48,6 +48,7 @@ public class cajeroMejorado{
         intentos = 1;
 
         //variables datos cbu, saldos, pagos
+        cbuPropio= 309255953;
         cbu = 0;//ingreso de nuevo cbu
         monto = 0;
         saldo= 43500.77;
@@ -96,7 +97,18 @@ public class cajeroMejorado{
                     switch (menu) {
                         case 1://CUENTA Y SALDOS
                             System.out.println("DATOS CUENTA//SALDOS");
-
+                            System.out.println("Usuario: " + usuarioGuardado);
+                            System.out.println("CBU N°"+ cbuPropio);
+                            System.out.println("1-Ver saldo");
+                            System.out.println("2-Regresar al Menú anterior");
+                            respuesta=miTeclado.nextInt();
+                            if(respuesta==rtaSaved){
+                                System.out.println("Su saldo actual es: $" + saldo);
+                            }else{
+                                System.out.println("*****Regresando al menú anterior*****");
+                            }
+                            System.out.println("********************************************");
+                            break;
 
                         case 2://TRANSFERENCIAS
                             System.out.println("Seccion TRANSFERENCIAS");
