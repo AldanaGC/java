@@ -28,16 +28,20 @@ public class cajeroMejorado{
         //LETRAS
         String usuario, usuarioGuardado, claveGuardada, clave, sesionContinuar, sesion;
         //NUMEROS
-        int intentos, maximo, cbu, menu, respuesta, rtaSaved, cbuPropio;
+        int intentos, maximo, cbu, menu, respuesta, respuesta2, rtaSaved, rtaSaved2, cbuPropio;
         //DECIMALES
         double monto, saldo, totalPagos;
+        char menu2;
 
         //variables ingresos por teclado opciones
-        menu = 0; //para ir al menu de opciones
+        menu = 0; //para ir al menu de opciones PRINCIPAL
+        menu2 ='A';//MENU SECUNDARIO
         sesion = "";//para continuar al menu principal
         sesionContinuar = "S";
         respuesta=0;
+        respuesta2= 0;
         rtaSaved=1;
+        rtaSaved2=3;
         
         //variables registro
         usuario="";
@@ -67,7 +71,11 @@ public class cajeroMejorado{
         cbuAgendado.add(7006543);
         cbuAgendado.add(80076543);
 
-        String usuario1 = "Fernando", usuario2="Mariela", usuario3="Pedro", usuario4="Josefina";
+        ArrayList<String> userSaved = new ArrayList<String>();
+        userSaved.add("Fernando");
+        userSaved.add("Mariela");
+        userSaved.add("Pedro");
+        userSaved.add("Josefina");
 
 
 
@@ -91,20 +99,25 @@ public class cajeroMejorado{
                 System.out.println("Su saldo actual es de $" + saldo);
                 System.out.println("¿Desea continuar operando? Marque S para continuar al Menu de opciones / N para cerrar sesion)");
                 sesion = miTeclado.nextLine();
-            }if(sesion .equals(sesionContinuar)){
+            }if(sesion .equals(sesionContinuar)){//opcion S para continuar al menu, otra para salir
+                System.out.println("********************************************");
                 System.out.println("Cargando menú de opciones");
-                do{
+                System.out.println("********************************************");
+                do{//menu de opciones que vuelve cuando terminan las operaciones hasta que se elige salir y cerrar sesion
                 do{
                     System.out.println("Menú de opciones");
                     System.out.println("1: Datos de cuenta / Saldos.");
-                    System.out.println("2: Realizar transferencia.");
-                    System.out.println("3: Realizar un pago.");
+                    System.out.println("2: Transferencias.");
+                    System.out.println("3: Pagos.");
                     System.out.println("4: Cerrar sesión.");
                     menu = miTeclado.nextInt();
+                    System.out.println("********************************************");
                     System.out.println("Ha seleccionado la opcion: " + menu);
+                    System.out.println("********************************************");
+
                     }while(menu<1 || menu>5);
 
-            //estructura switch
+            //estructura switch para menu principal
                     switch (menu) {
                         case 1://CUENTA Y SALDOS
                             System.out.println("DATOS CUENTA//SALDOS");
@@ -120,43 +133,54 @@ public class cajeroMejorado{
                             }else{
                                 System.out.println("*****Regresando al menú anterior*****");
                             }
-                            System.out.println("********************************************");
                             break;
 
                         case 2://TRANSFERENCIAS
                             System.out.println("Seccion TRANSFERENCIAS");
-                            System.out.println("Ingrese monto a transferir");
-                            monto = miTeclado.nextDouble();
-                            if(monto > saldo){
-                                System.out.println("No posee saldo suficiente para realizar esta operación");
-                                System.out.println("*****Regresando al menú anterior*****");
-
-                            }else{
-                            System.out.println("Usted va a transferir: $" + monto + ". ¿Desea continuar? 1 (Continuar) / 2 (cancelar y regresar al menú anterior)");
-                            respuesta = miTeclado.nextInt();
-                                if(respuesta == rtaSaved){
-                                    System.out.println("Se debitarán de su cuenta: $" + monto);
-                                    System.out.println("Ingrese CBU DESTINATARIO");
+                            System.out.println("***********************");
+                            System.out.println("A-Ver agenda destinatarios");
+                            System.out.println("B-Transferir");
+                            System.out.println("C-Salir");
+                            menu2=miTeclado.next().charAt(0);
+                            //estructura switch sub-menu para ver agenda por arraylist o realizar transferencia
+                            switch(menu2){
+                                case 'A'://agenda destinatarios
+                                    System.out.println("AGENDA DESTINATARIOS");
+                                    System.out.println(userSaved.get(0) + ". CBU: " + cbuAgendado.get(0));
+                                    System.out.println(userSaved.get(1) + ". CBU: " + cbuAgendado.get(1));
+                                    System.out.println(userSaved.get(2) + ". CBU: " + cbuAgendado.get(2));
+                                    System.out.println(userSaved.get(3) + ". CBU: " + cbuAgendado.get(3));
+                                    break;
+                                case 'B'://ejecutar trasnferencia 
+                                    System.out.println("TRANSFERENCIAS INMEDIATAS");
+                                    System.out.println("Ingrese CBU destinatario");
                                     cbu = miTeclado.nextInt();
+                                    System.out.println("Ingrese importe a transferir");
+                                    monto=miTeclado.nextDouble();
                                     System.out.println("*****A continuación verifique datos ingresados y confirme operación.*****");
                                     System.out.println("Importe a tranferir $" +monto);
                                     System.out.println("CBU DESTINTARIO:" +cbu);
                                     System.out.println("**************************************");
-                                    System.out.println("1-Tranferir.");
+                                    System.out.println("1-Transferir.");
                                     System.out.println("2-Cancelar");
                                     System.out.println("**************************************");
-                                    respuesta=miTeclado.nextInt();
-                                }if((respuesta == rtaSaved)){
-                                    System.out.println("Operación exitosa! Se han trasnferido $" + monto + " de su cuenta al CBU N° " + cbu +". Su saldo actual es de: $" + (saldo-monto));
-                                    System.out.println("**************************************");
-                                }else{
-                                    System.out.println("Operación cancelada");
-                                    System.out.println("**************************************");
+                                    respuesta=miTeclado.nextInt();//da opcion a cancelar y no realizar transf o continuar si el saldo es suficiente
+                                    if((respuesta == rtaSaved) && (monto<=saldo)){
+                                        System.out.println("*****PROCESANDO*****");
+                                        System.out.println("Operación exitosa! Se han trasnferido $" + monto + " de su cuenta al CBU N° " + cbu +". Su saldo actual es de: $" + (saldo-monto));
+                                        System.out.println("**************************************");
+                                    }else if((respuesta==rtaSaved) && (monto>saldo)){//si el saldo es insuficiente
+                                        System.out.println("Usted no cuenta con fondos suficientes para efectuar la operación. Revise su estado de cuenta");
 
-                                }
+                                    }else if (respuesta != rtaSaved){//si la respuesta es cancelar retorna menu principal
+                                        System.out.println("Operación cancelada");
+                                        System.out.println("**************************************");
+                                    }
+                                    break;  
                             }
+                            System.out.println("Regresando al menu principal...");
                             System.out.println("*****Aguarde un instante*****");
-                            System.out.println("**********************************************************");
+                            System.out.println("*******************************");
                             break;
                         case 3://PAGO DE SERVICIOS
                             System.out.println("Seccion PAGOS");
@@ -183,10 +207,10 @@ public class cajeroMejorado{
 
                             }
                             System.out.println("*****Aguarde un instante*****");
-                            System.out.println("**********************************************************");
+                            System.out.println("*******************************");
                             break;
                         case 4:
-                            System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
+                            System.out.println("Cerrando sesión. Esto puede tomar unos segundos...");
                             break;
 
                         default:
