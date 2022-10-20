@@ -7,7 +7,12 @@ import java.util.ArrayList;
 
 public class funciones {
 
-    
+    //zona de funciones, esta funcion imprime un mensaje
+    static void imprimir(String mensaje){
+        System.out.println(mensaje);
+    }
+
+
 
     public static void main(String[] args) {
         
@@ -30,6 +35,7 @@ public class funciones {
 
         //Obtener longitud del arraylist
         //autos.size();
+        imprimir("Esta es una impresion de prueba de mi propia función");
         System.out.println("La longitud de autos es: " + autos.size());
 
         //4- Añadimos elemento en cualquier momento

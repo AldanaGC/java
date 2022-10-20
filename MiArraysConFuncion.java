@@ -1,9 +1,16 @@
 /**
  * arrays
  */
-public class arrays {
+public class MiArraysConFuncion {
+
+    //zona de funciones
+    //Funcion que devuelve longitud del array
+    static void size(int[] numero){
+        System.out.println("La longitud del array es: " + numero.length);
+    }
 
     public static void main(String[] args) {
+
         //declaracion array
         int [] numeros; //por convención el nombre del array sera en plural
 
@@ -44,6 +51,8 @@ public class arrays {
         for(int otroArray: otroArrays){
             System.out.println(otroArray);
         }
+
+        size(numeros);
 
 
     }
