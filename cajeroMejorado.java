@@ -26,36 +26,13 @@ public class cajeroMejorado{
 
         //delcaro e inicializo variables
         //LETRAS
-        String usuario, usuarioGuardado, claveGuardada, clave, sesionContinuar, sesion;
+        String usuario="", usuarioGuardado="Aldana", claveGuardada="al1234", clave="", sesionContinuar="S", sesion="";
         //NUMEROS
-        int intentos, maximo, cbu, menu, respuesta, respuesta2, rtaSaved, rtaSaved2, cbuPropio;
+        int intentos=1, maximo=3/*intento inicio de sesion*/, cbu=0, menu=0, respuesta=0, rtaSaved=1, cbuPropio= 309255953 ;
         //DECIMALES
-        double monto, saldo, totalPagos;
-        char menu2;
+        double monto, saldo=135000.55, totalPagos;
+        char menu2='A';
 
-        //variables ingresos por teclado opciones
-        menu = 0; //para ir al menu de opciones PRINCIPAL
-        menu2 ='A';//MENU SECUNDARIO
-        sesion = "";//para continuar al menu principal
-        sesionContinuar = "S";
-        respuesta=0;
-        respuesta2= 0;
-        rtaSaved=1;
-        rtaSaved2=3;
-        
-        //variables registro
-        usuario="";
-        clave = "";
-        usuarioGuardado = "aldana";
-        claveGuardada = "1234";
-        maximo = 3;
-        intentos = 1;
-
-        //variables datos cbu, saldos, pagos
-        cbuPropio= 309255953;
-        cbu = 0;//ingreso de nuevo cbu
-        monto = 0;
-        saldo= 43500.77;
         //declaro e inicializo variables de pagos
         int cable = 10000;
         int inmbobiliario = 4998;
