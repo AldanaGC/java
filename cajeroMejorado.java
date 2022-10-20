@@ -17,6 +17,12 @@ import java.util.*;
  */
 
 public class cajeroMejorado{
+
+    //zona funciones
+    static void menu (String retornoMenu){
+        System.out.println();
+    }
+
     public static void main(String[] args) {
         //declaro objeto
         Scanner miTeclado;
