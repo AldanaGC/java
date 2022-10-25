@@ -19,8 +19,8 @@ import java.util.*;
 public class cajeroMejorado{
 
     //zona funciones
-    static void menu (String retornoMenu){
-        System.out.println();
+    static void imprimir (String mensaje){
+        System.out.println(mensaje);
     }
 
     public static void main(String[] args) {
@@ -36,7 +36,7 @@ public class cajeroMejorado{
         //NUMEROS
         int intentos=1, maximo=3/*intento inicio de sesion*/, cbu=0, menu=0, respuesta=0, rtaSaved=1, cbuPropio= 309255953 ;
         //DECIMALES
-        double monto, saldo=135000.55, totalPagos;
+        double monto, saldo=13000.55, totalPagos;
         char menu2='A';
 
         //declaro e inicializo variables de pagos
@@ -111,7 +111,9 @@ public class cajeroMejorado{
                             respuesta=miTeclado.nextInt();
                             if(respuesta==rtaSaved){
                                 System.out.println("Su saldo actual es: $" + saldo);
-                                System.out.println("*****Regresando al menú anterior*****");
+                                imprimir("Regresando al menu principal...");
+                                imprimir("*****Aguarde un instante*****");
+                                imprimir("*******************************");
 
                             }else{
                                 System.out.println("*****Regresando al menú anterior*****");
@@ -159,7 +161,7 @@ public class cajeroMejorado{
                                         System.out.println("Operación cancelada");
                                         System.out.println("**************************************");
                                     }
-                                    break;  
+ 
                             }
                             System.out.println("Regresando al menu principal...");
                             System.out.println("*****Aguarde un instante*****");
@@ -173,19 +175,19 @@ public class cajeroMejorado{
                             System.out.println("El monto total a pagar es de: $" + totalPagos);
                             System.out.println("¿Desea proceder al pago de lo mismos? 1- para Continuar / 2- para terminar");
                             respuesta = miTeclado.nextInt();
-                            if(respuesta == rtaSaved){
+                            if(respuesta == rtaSaved){//muestra importe total y pide confirmacion
                                 System.out.println("Se debitarán de su cuenta: $" + totalPagos);
                                 System.out.println("1- Confirmar y pagar.");
                                 System.out.println("2- Cancelar y regresar el menú anterior.");
                                 respuesta=miTeclado.nextInt();
-                            }if((totalPagos <= saldo ) && (respuesta == rtaSaved)){
+                            }if((totalPagos <= saldo ) && (respuesta == rtaSaved)){//Si confirma y hay saldo suficiente, procede al pago
                                 System.out.println("******PREOCESANDO PAGOS******");
                                 System.out.println("Pagos realizados con éxito, se debitó de su cuenta la suma de $" + totalPagos + ". Su saldo actual es: $" +  (saldo - totalPagos));
                                 System.out.println("**********************************");
                                 System.out.println("*****Regresando al menú anterior*****");
 
                             }else if (saldo<totalPagos){
-                                System.out.println("Su saldo es insuficiente para realizar la transaccion.");
+                                System.out.println("Su saldo es insuficiente para realizar la transaccion.");//No tiene saldo, cancela y vuelve al menu anterior
                                 System.out.println("*****Regresando al menú anterior*****");
 
                             }
@@ -200,7 +202,7 @@ public class cajeroMejorado{
                         System.out.println("No es una opcion válida");
                        
                        }
-                    }while((menu != 5));
+                    }while((menu != 4));
             }else{
                 System.out.println("Cerrando sesion");
             }
