@@ -110,6 +110,8 @@ public class homeBanking{
        }
 
        System.out.println("*****CERRANDO SESION*****");
+
+       miTeclado.close();
     }
 }
     
