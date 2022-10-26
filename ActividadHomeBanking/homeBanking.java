@@ -108,6 +108,8 @@ public class homeBanking{
             System.out.println("Su sesión ha expirado. Ingrese nuevamente sus datos para entrar al sistema");
             break;
        }
+
+       System.out.println("*****CERRANDO SESION*****");
     }
 }
     
