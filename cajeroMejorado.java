@@ -84,7 +84,7 @@ public class cajeroMejorado{
                 sesion = miTeclado.nextLine();
             }if(sesion .equals(sesionContinuar)){//opcion S para continuar al menu, otra para salir
                 System.out.println("********************************************");
-                System.out.println("Cargando menú de opciones");
+                System.out.println("Cargando menú principal");
                 System.out.println("********************************************");
                 do{//menu de opciones que vuelve cuando terminan las operaciones hasta que se elige salir y cerrar sesion
                 do{
@@ -116,7 +116,7 @@ public class cajeroMejorado{
                                 imprimir("*******************************");
 
                             }else{
-                                System.out.println("*****Regresando al menú anterior*****");
+                                System.out.println("*****Regresando al menú principal*****");
                             }
                             break;
 
