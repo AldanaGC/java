@@ -3,6 +3,7 @@ package ActividadHomeBanking;
 import java.util.*;
 
 /**
+ *  *ACLARACION: EN ESTE PROGRAMA ME SALGO DE LA CONSIGNA APLICANDO BUCLES PARA VOLVER AL MENU PRINCIPAL SIEMPRE QUE TERMINA DE EJECUTARSE UN DETERMINADO BLOQUE, TAMBIEN EN EL INCIIO DE SESIÓN SE PERMITEN 3 INTENTOS O SE BLOQUEA EL USUARIO Y EN LUGAR DE SALIR DEL PROGRAMA CUANDO SE CUMPLE DTERMINADA CONDICION/BLOQUE SE SALE Y CIERRA SESION POR DETERMINACION DEL USUARIO. EN TRANSFERENCIAS HAY UN SUB MENU CON AGENDA DE DESTINATARIOS U OPCION TRANSFERIR. Y UNA VEZ EJECUTADO EL BLOQUE SELECCIONADO SIEMPRE SE TERONA AL MENU PRINCIPAL.
  * Porgramar solo con estructuras de control switch y estructuras if anidados, un menú home-banking.
  * Que pida un usuario sin limite de ingresos (por ahora).
  * Que pida una clave.
@@ -79,7 +80,7 @@ public class cajeroMejorado{
         //if-else
         //Saludo de bienvenida, opcion de cerrar sesion/continuar a menu
         if(usuario .equals(usuarioGuardado) && clave .equals(claveGuardada)){
-                System.out.println("Hola, " + usuario + ". Bienvenido/a al sistema de Home Banking");
+                System.out.println("Hola, " + usuario + ". Bienvenido/a al sistema de banca electrónica");
                 System.out.println("Su saldo actual es de $" + saldo);
                 System.out.println("¿Desea continuar operando? Marque S para continuar al Menu de opciones / N para cerrar sesion)");
                 sesion = miTeclado.nextLine();
@@ -164,7 +165,7 @@ public class cajeroMejorado{
                                     }
  
                             }
-                            System.out.println("Regresando al menu principal...");
+                            System.out.println("Regresando al menu principal");
                             System.out.println("*****Aguarde un instante*****");
                             System.out.println("*******************************");
                             break;
@@ -174,22 +175,22 @@ public class cajeroMejorado{
                             System.out.println("Pendiente de pago - IMPUESTO INMOBILIARIO. Monto a abonar: $"+ inmbobiliario);
                             System.out.println("Pendiente de pago - IMPUESTO AUTOMOTOR. Monto a abonar: $" + automotor);
                             System.out.println("El monto total a pagar es de: $" + totalPagos);
-                            System.out.println("¿Desea proceder al pago de lo mismos? 1- para Continuar / 2- para terminar");
+                            System.out.println("¿Desea proceder al pago de lo mismos? 1- para Continuar / 2- para volver al menu principal");
                             respuesta = miTeclado.nextInt();
                             if(respuesta == rtaSaved){//muestra importe total y pide confirmacion
                                 System.out.println("Se debitarán de su cuenta: $" + totalPagos);
                                 System.out.println("1- Confirmar y pagar.");
-                                System.out.println("2- Cancelar y regresar el menú anterior.");
+                                System.out.println("2- Cancelar y regresar el menú principal");
                                 respuesta=miTeclado.nextInt();
                             }if((totalPagos <= saldo ) && (respuesta == rtaSaved)){//Si confirma y hay saldo suficiente, procede al pago
                                 System.out.println("******PREOCESANDO PAGOS******");
                                 System.out.println("Pagos realizados con éxito, se debitó de su cuenta la suma de $" + totalPagos + ". Su saldo actual es: $" +  (saldo - totalPagos));
                                 System.out.println("**********************************");
-                                System.out.println("*****Regresando al menú anterior*****");
+                                System.out.println("*****Regresando al menú principal*****");
 
-                            }else if (saldo<totalPagos){
+                            }else if (saldo<totalPagos && (respuesta == rtaSaved)){
                                 System.out.println("Su saldo es insuficiente para realizar la transaccion.");//No tiene saldo, cancela y vuelve al menu anterior
-                                System.out.println("*****Regresando al menú anterior*****");
+                                System.out.println("*****Regresando al menú principal*****");
 
                             }
                             System.out.println("*****Aguarde un instante*****");
@@ -205,11 +206,12 @@ public class cajeroMejorado{
                        }
                     }while((menu != 4));
             }else{
-                System.out.println("Cerrando sesion");
+                System.out.println("************************");
             }
 
 
-       System.out.println("Gracias por utilizar nuestro sistema de HB. Hasta pronto.");
+       System.out.println("Gracias por utilizar nuestro sistema de banca electrónica.");
+       System.out.println("¡¡NO OLVIDE EXTRAER SU TARJETA!!. Hasta pronto");
 
 
 
