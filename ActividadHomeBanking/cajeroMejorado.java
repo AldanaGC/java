@@ -2,6 +2,8 @@ package ActividadHomeBanking;
 //importacion libreria
 import java.util.*;
 
+import javax.lang.model.util.ElementScanner14;
+
 /**
  *  *ACLARACION: EN ESTE PROGRAMA ME SALGO DE LA CONSIGNA APLICANDO BUCLES PARA VOLVER AL MENU PRINCIPAL SIEMPRE QUE TERMINA DE EJECUTARSE UN DETERMINADO BLOQUE, TAMBIEN EN EL INCIIO DE SESIÓN SE PERMITEN 3 INTENTOS O SE BLOQUEA EL USUARIO Y EN LUGAR DE SALIR DEL PROGRAMA CUANDO SE CUMPLE DTERMINADA CONDICION/BLOQUE SE SALE Y CIERRA SESION POR DETERMINACION DEL USUARIO. EN TRANSFERENCIAS HAY UN SUB MENU CON AGENDA DE DESTINATARIOS U OPCION TRANSFERIR. Y UNA VEZ EJECUTADO EL BLOQUE SELECCIONADO SIEMPRE SE TERONA AL MENU PRINCIPAL.
  * Porgramar solo con estructuras de control switch y estructuras if anidados, un menú home-banking.
@@ -38,7 +40,8 @@ public class cajeroMejorado{
         //NUMEROS
         int intentos=1, maximo=3/*intento inicio de sesion*/, cbu=0, menu=0, respuesta=0, rtaSaved=1, cbuPropio= 309255953 ;
         //DECIMALES
-        double monto, saldo=13000.55, totalPagos;
+        double monto, saldo=130000.55, totalPagos;
+
         char menu2='A';
 
         //declaro e inicializo variables de pagos
@@ -50,7 +53,6 @@ public class cajeroMejorado{
 
         //ARRAYLIST para agenda de destinatarios transferencias
         ArrayList<Integer> cbuAgendado = new ArrayList<Integer>();
-
         cbuAgendado.add(3000234);
         cbuAgendado.add(3005678);
         cbuAgendado.add(7006543);
@@ -61,6 +63,12 @@ public class cajeroMejorado{
         userSaved.add("Mariela");
         userSaved.add("Pedro");
         userSaved.add("Josefina");
+        //Para ingresar nuevo usuario por teclado y agendar
+       // String nameUser;
+        int saveCbu = 0;
+        
+        
+
 
 
 
@@ -137,6 +145,22 @@ public class cajeroMejorado{
                                     System.out.println(userSaved.get(1) + ". CBU: " + cbuAgendado.get(1));
                                     System.out.println(userSaved.get(2) + ". CBU: " + cbuAgendado.get(2));
                                     System.out.println(userSaved.get(3) + ". CBU: " + cbuAgendado.get(3));
+                                    System.out.println("¿Desea agendar nuevo destinatario? 1- SI. 2-NO");
+                                    menu = miTeclado.nextInt();
+                                    if(menu==1){
+                                        imprimir("Ingrese N° CBU");
+                                        saveCbu=miTeclado.nextInt();
+                                        cbuAgendado.add(saveCbu);
+                                        imprimir("¡Usuario agendado con éxito! A continuación su agenda actualizada");
+                                        System.out.println(userSaved.get(0) + ". CBU: " + cbuAgendado.get(0));
+                                        System.out.println(userSaved.get(1) + ". CBU: " + cbuAgendado.get(1));
+                                        System.out.println(userSaved.get(2) + ". CBU: " + cbuAgendado.get(2));
+                                        System.out.println(userSaved.get(3) + ". CBU: " + cbuAgendado.get(3));
+                                        System.out.println("Nuevo CBU: " + cbuAgendado.get(4));
+
+                                    }else{
+                                        imprimir("***************");
+                                    }
                                     break;
                                 case 'B'://ejecutar trasnferencia 
                                     System.out.println("TRANSFERENCIAS INMEDIATAS");
