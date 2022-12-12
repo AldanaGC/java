@@ -5,7 +5,9 @@ public class MetodoRandom {
         
         //Metodo Random
         System.out.println(Math.random());
-        
+
+        //Met
+
     }
     
 }
